@@ -1,3 +1,4 @@
 config.toml
 dist/
 sync_pastbin
+SyncClipboard-darwin-arm64
