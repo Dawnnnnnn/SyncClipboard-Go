@@ -1,0 +1,4 @@
+RedisAddr = "123.123.33.33:5555"
+RedisPassword = "123456!@#$%^"
+DeviceToken = "72717fc0f8b595bf254bbfee43b9f702"
+TopicKey = "test"
