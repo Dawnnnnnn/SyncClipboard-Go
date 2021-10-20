@@ -4,12 +4,14 @@ import (
 	"context"
 	"encoding/base64"
 	"encoding/json"
+	"fmt"
 	"github.com/go-redis/redis"
 	"github.com/pelletier/go-toml/v2"
 	log "github.com/sirupsen/logrus"
 	"github.com/tidwall/gjson"
 	"golang.design/x/clipboard"
 	"io/ioutil"
+	"os/exec"
 	"time"
 )
 
@@ -55,6 +57,12 @@ func SubscribeRedis(client *redis.Client) {
 			decodeString, _ := base64.StdEncoding.DecodeString(message)
 			log.Infof("向剪切板写入信息: %s\n", decodeString)
 			clipboard.Write(clipboard.FmtText, decodeString)
+			notifyCommand := fmt.Sprintf("display notification \"%s\" with title \"SyncClipBoard同步消息\"", decodeString)
+			command := exec.Command("osascript", "-e", notifyCommand)
+			err := command.Run()
+			if err != nil {
+				fmt.Println(err.Error())
+			}
 			flag = true
 			time.Sleep(time.Second * 1)
 			flag = false
