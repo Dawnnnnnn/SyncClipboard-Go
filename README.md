@@ -8,6 +8,10 @@
 
 运行时需要同目录下有`config.toml`文件，具体参数解释可以看安卓端仓库的说明
 
+## 奇技淫巧
+
+1. Mac端的`SyncClipboard-Go`中的将接收的剪切板内容以系统通知的方式展示出来的功能，与安卓手机上 [验证码提取器](https://github.com/tianma8023/XposedSmsCode) 插件联动，即可实现不需碰手机直接在Mac上粘贴验证码的效果
+
 ## Mac下配置开机启动
 
 ```bash
